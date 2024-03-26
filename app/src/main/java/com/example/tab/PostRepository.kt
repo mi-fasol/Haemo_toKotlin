@@ -1,15 +1,16 @@
 package com.example.tab
 
 import retrofit2.Response
+import javax.inject.Inject
 
-class PostRepository {
+class PostRepository @Inject constructor(private val retrofitClient: RetrofitClient) {
 
     suspend fun getPost(): Response<List<Post>> {
-        return RetrofitClient.service.getPost()
+        return retrofitClient.service.getPost()
     }
 
     suspend fun getOnePost(idx: Int): Response<Post> {
-        return RetrofitClient.service.getOnePost(idx)
+        return retrofitClient.service.getOnePost(idx)
     }
 
 }

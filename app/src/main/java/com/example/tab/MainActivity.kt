@@ -40,6 +40,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tab.ui.theme.TabTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
 //import dagger.hilt.android.AndroidEntryPoint
 //import dagger.hilt.android.HiltAndroidApp
 
@@ -50,11 +53,10 @@ import com.example.tab.ui.theme.TabTheme
 //    }
 //}
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<PostViewModel> {
-        ViewModelFactory(PostRepository())
-    }
+    private val viewModel by viewModels<PostViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,9 +78,9 @@ class MainActivity : ComponentActivity() {
 fun MainScreen(viewModel: PostViewModel) {
     val selectedTab = remember { mutableIntStateOf(0) }
 
-    App()
+//    App()
 
-//    TabScreen(selectedTab = selectedTab, viewModel)
+   TabScreen(selectedTab = selectedTab, viewModel)
 }
 
 class ScrollPositionState {
@@ -143,28 +145,28 @@ fun App() {
 }
 
 
-//@Composable
-//fun TabScreen(selectedTab: MutableState<Int>, viewModel: PostViewModel) {
-//    val tabs = listOf("Tab 1", "Tab 2")
-//
-//    Column {
-//        TabRow(selectedTabIndex = selectedTab.value) {
-//            tabs.forEachIndexed { index, title ->
-//                Tab(
-//                    selected = selectedTab.value == index,
-//                    onClick = { selectedTab.value = index }
-//                ) {
-//                    Text(text = title)
-//                }
-//            }
-//        }
-//
-//        when (selectedTab.value) {
-//            0 -> Tab1Screen(viewModel)
-//            1 -> Tab2Screen(viewModel)
-//        }
-//    }
-//}
+@Composable
+fun TabScreen(selectedTab: MutableState<Int>, viewModel: PostViewModel) {
+    val tabs = listOf("Tab 1", "Tab 2")
+
+    Column {
+        TabRow(selectedTabIndex = selectedTab.value) {
+            tabs.forEachIndexed { index, title ->
+                Tab(
+                    selected = selectedTab.value == index,
+                    onClick = { selectedTab.value = index }
+                ) {
+                    Text(text = title)
+                }
+            }
+        }
+
+        when (selectedTab.value) {
+            0 -> Tab1Screen(viewModel)
+            1 -> Tab2Screen(viewModel)
+        }
+    }
+}
 
 @Composable
 fun Tab1Screen(viewModel: PostViewModel) {
@@ -188,6 +190,7 @@ fun Tab1Screen(viewModel: PostViewModel) {
 
 }
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun Tab2Screen(viewModel: PostViewModel) {
     val num = viewModel.num.collectAsState()

@@ -3,16 +3,20 @@ package com.example.tab
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 //import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+
 //import javax.inject.Inject
 
 
-class PostViewModel(
-    private val repository: PostRepository // 이 부분은 실제로 주입받는 의존성에 맞게 수정해야 합니다.
+@HiltViewModel
+class PostViewModel @Inject constructor(
+    private val repository: PostRepository
 ) : ViewModel() {
     val num = MutableStateFlow(0)
 

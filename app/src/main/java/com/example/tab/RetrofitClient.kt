@@ -9,12 +9,17 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+@Module
+@InstallIn(SingletonComponent::class)
 object RetrofitClient {
     val gson = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         GsonBuilder()
