@@ -1,7 +1,6 @@
-package com.example.tab
+package com.example.haemo.network
 
 import android.os.Build
-import androidx.annotation.RequiresApi
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

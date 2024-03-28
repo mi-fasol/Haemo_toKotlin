@@ -1,4 +1,4 @@
-package com.example.tab.ui.theme
+package com.example.haemo.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

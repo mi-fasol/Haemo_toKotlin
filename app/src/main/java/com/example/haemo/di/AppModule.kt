@@ -1,6 +1,6 @@
-package com.example.tab.di
+package com.example.haemo.di
 
-import com.example.tab.RetrofitClient
+import com.example.haemo.network.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitClient(): RetrofitClient{
+    fun provideRetrofitClient(): RetrofitClient {
         return RetrofitClient
     }
 }

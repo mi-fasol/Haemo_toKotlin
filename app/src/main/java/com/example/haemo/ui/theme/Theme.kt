@@ -1,4 +1,4 @@
-package com.example.tab.ui.theme
+package com.example.haemo.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.example.tab
+package com.example.haemo.network
 
 sealed class Resource<out T> {
     data class Success<out T>(val data: T?) : Resource<T>()

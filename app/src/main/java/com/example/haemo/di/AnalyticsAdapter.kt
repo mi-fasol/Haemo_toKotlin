@@ -1,4 +1,4 @@
-package com.example.tab
+package com.example.haemo.di
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ActivityContext
